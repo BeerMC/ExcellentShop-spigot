@@ -104,7 +104,7 @@ public abstract class AbstractAuctionMenu<A extends AbstractListing> extends Con
             AuctionUtils.hideListingAttributes(item);
 
             ItemReplacer.create(item).trimmed()
-                .setDisplayName(this.itemName)
+                //.setDisplayName(this.itemName)
                 .setLore(this.itemLore)
                 .replace(aucItem.replacePlaceholders())
                 .replacePlaceholderAPI(player)

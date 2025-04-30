@@ -107,7 +107,7 @@ public class SellMenu extends ConfigMenu<ShopPlugin> implements Linked<List<Item
             double price = product.getPriceSell(player) * (item.getAmount() / (double) product.getUnitAmount());
 
             ItemReplacer.create(icon)
-                .setDisplayName(this.itemName)
+                //.setDisplayName(this.itemName)
                 .setLore(this.itemLore)
                 .replacement(replacer -> replacer
                     .replace(ITEM_LORE, ItemUtil.getSerializedLore(item))

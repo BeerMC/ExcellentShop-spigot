@@ -125,7 +125,8 @@ public class ShopProductsMenu extends ShopEditorMenu implements Linked<ChestShop
                 ChestProduct product = queue.poll();
                 ItemStack productIcon = new ItemStack(product.getPreview());
                 ItemReplacer.create(productIcon).trimmed().hideFlags()
-                    .setDisplayName(this.productName).setLore(this.productLore)
+                    //.setDisplayName(this.productName)
+                    .setLore(this.productLore)
                     .replace(product.replacePlaceholders(viewer.getPlayer()))
                     .replacePlaceholderAPI(viewer.getPlayer())
                     .writeMeta();

@@ -48,13 +48,30 @@
             <url>https://repo.william278.net/releases</url>
         </repository>
 
+
+        <!-- Local because kyori can not be fetched fuck this shit I tired -->
+        <repository>
+            <id>griefdefender</id>
+            <url>https://repo.glaremasters.me/repository/bloodshot</url>
+        </repository>
+
+        <repository>
+            <id>alex9849</id>
+            <url>https://nexus.alex9849.net/repository/maven-releases/</url>
+        </repository>
+
+        <repository>
+            <id>alex9849-snapshots</id>
+            <url>https://nexus.alex9849.net/repository/maven-snapshots/</url>
+        </repository>
+
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>su.nightexpress.economybridge</groupId>
             <artifactId>economy-bridge</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -65,7 +82,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Local because kyori can not be fetched fuck this shit I tired -->
         <dependency>
             <groupId>com.griefdefender</groupId>
             <artifactId>api</artifactId>
@@ -81,8 +97,8 @@
         </dependency>
 
         <dependency>
-            <groupId>net.alex9849.arm</groupId>
-            <artifactId>AdvancedRegionMarket</artifactId>
+            <groupId>net.alex9849.advancedregionmarket</groupId>
+            <artifactId>advancedregionmarket</artifactId>
             <version>3.5.3</version>
             <scope>provided</scope>
         </dependency>
@@ -118,7 +134,7 @@
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
-            <version>5.3.0-SNAPSHOT</version>
+            <version>5.3.0</version>
             <scope>provided</scope>
         </dependency>
 

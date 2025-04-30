@@ -30,6 +30,7 @@ import su.nightexpress.nightcore.util.time.TimeFormats;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+
 public abstract class DisplayHandler<T> extends SimpleManager<ShopPlugin> {
 
     protected final ChestShopModule         module;
@@ -177,6 +178,8 @@ public abstract class DisplayHandler<T> extends SimpleManager<ShopPlugin> {
                 this.sendPacket(player, this.createDestroyPacket(entityList.getIDs()));
                 return;
             }
+
+            //testPlayerTranslatable(player);
 
             boolean create = !entityList.canSee(player);
 

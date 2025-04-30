@@ -216,7 +216,7 @@ public class AuctionMenu extends AbstractAuctionMenu<ActiveListing> {
             AuctionUtils.hideListingAttributes(item);
 
             ItemReplacer.create(item).trimmed()
-                .setDisplayName(this.itemName)
+                //.setDisplayName(this.itemName)
                 .setLore(this.itemLore)
                 .injectLore(PLACEHOLDER_LORE_FORMAT, this.getLoreFormat(player, listing))
                 .replaceLoreExact(PLACEHOLDER_ACTION_PREVIEW, previewLore)

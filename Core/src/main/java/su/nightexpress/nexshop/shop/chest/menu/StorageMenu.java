@@ -92,7 +92,7 @@ public class StorageMenu extends ShopEditorMenu implements AutoFilled<ChestProdu
         autoFill.setItemCreator(product -> {
             ItemStack icon = product.getPreview();
             ItemReplacer.create(icon).hideFlags().trimmed()
-                .setDisplayName(this.objectName)
+                //.setDisplayName(this.objectName)
                 .setLore(this.objectLore)
                 .replace(product.replacePlaceholders(viewer.getPlayer()))
                 .replace(GENERIC_AMOUNT, NumberUtil.format(product.getQuantity()))

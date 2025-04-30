@@ -47,7 +47,13 @@ public class ShopUtils {
 
     @Nullable
     public static ItemStack readItemTag(@NotNull String serialized) {
-        return Version.isAtLeast(Version.MC_1_21) && serialized.contains("{") ? ItemNbt.fromTagString(serialized) : ItemNbt.decompress(serialized);
+        ItemStack item;
+        if(Version.isAtLeast(Version.MC_1_21) && serialized.contains("{")){
+            item = ItemNbt.fromTagString(serialized);
+        }else{
+            item = ItemNbt.decompress(serialized);
+        }
+        return item;
     }
 
     @Nullable

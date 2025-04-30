@@ -90,7 +90,7 @@ public class ShopShowcaseMenu extends ShopEditorMenu implements Linked<ChestShop
         autoFill.setItemCreator(pair -> {
             ItemStack icon = new ItemStack(pair.getSecond());
             ItemReplacer.create(icon).hideFlags().trimmed()
-                .setDisplayName(this.itemName)
+                //.setDisplayName(this.itemName)
                 .setLore(this.itemLore)
                 .replace(GENERIC_NAME, ItemUtil.getSerializedName(pair.getSecond()))
                 .replacePlaceholderAPI(viewer.getPlayer())
