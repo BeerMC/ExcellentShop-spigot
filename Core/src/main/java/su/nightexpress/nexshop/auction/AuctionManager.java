@@ -266,7 +266,8 @@ public class AuctionManager extends AbstractModule {
             .onReturn((viewer, event) -> {
                 this.plugin.runTask(task -> this.openAuction(viewer.getPlayer()));
             })
-            .setIcon(NightItem.fromItemStack(listing.getItemStack()).localized(AuctionLang.UI_BUY_CONFIRM).replacement(replacer -> replacer.replace(listing.replacePlaceholders())))
+//            .setIcon(NightItem.fromItemStack(listing.getItemStack()).localized(AuctionLang.UI_BUY_CONFIRM).replacement(replacer -> replacer.replace(listing.replacePlaceholders())))
+            .setIcon(NightItem.fromItemStack(listing.getItemStack()).replacement(replacer -> replacer.replace(listing.replacePlaceholders())))
             .returnOnAccept(AuctionConfig.MENU_REOPEN_ON_PURCHASE.get())
             .build());
     }
@@ -275,6 +276,9 @@ public class AuctionManager extends AbstractModule {
         if (!force) {
             if (!this.canBeUsedHere(player)) return false;
         }
+
+//        this.getListings().removeInvalidActive();
+//        this.getListings().removeInvalidCompleted();
 
         return menu.open(player, target);
     }
@@ -487,13 +491,18 @@ public class AuctionManager extends AbstractModule {
 
         CompletedListing completedListing = CompletedListing.create(listing, buyer);
 
-        this.listings.remove(listing);
         this.listings.addCompleted(completedListing);
+        this.listings.remove(listing);
         this.plugin.runTaskAsync(task -> {
             this.database.addCompletedListing(completedListing);
             this.database.deleteListing(listing);
         });
+
         AuctionLang.LISTING_BUY_SUCCESS_INFO.getMessage().send(buyer, replacer -> replacer.replace(listing.replacePlaceholders()));
+
+        this.mainMenu.flush();
+        this.sellingMenu.flush();
+        this.unclaimedMenu.flush();
 
         // Notify the seller about the purchase.
         Player seller = plugin.getServer().getPlayer(listing.getOwner());
@@ -508,10 +517,6 @@ public class AuctionManager extends AbstractModule {
                 );
             }
         }
-
-        this.mainMenu.flush();
-        this.sellingMenu.flush();
-        this.unclaimedMenu.flush();
         return true;
     }
 

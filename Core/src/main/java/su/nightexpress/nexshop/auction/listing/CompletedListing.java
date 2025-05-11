@@ -30,14 +30,14 @@ public class CompletedListing extends AbstractListing {
 
         long buyDate = System.currentTimeMillis();
         long deletionDate = AuctionUtils.generatePurgeDate(buyDate);
-        boolean isPaid = false;
+        boolean isClaimed = false;
 
         double tax = AuctionUtils.getClaimTax(buyer);
         if (tax > 0D) {
             price -= Math.max(0D, AuctionUtils.getTax(currency, price, tax));
         }
 
-        return new CompletedListing(id, holder, ownerName, buyerName, typing, currency, price, creationDate, buyDate, deletionDate, isPaid);
+        return new CompletedListing(id, holder, ownerName, buyerName, typing, currency, price, creationDate, buyDate, deletionDate, isClaimed);
     }
 
     public CompletedListing(
